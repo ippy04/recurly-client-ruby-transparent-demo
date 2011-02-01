@@ -1,0 +1,38 @@
+<h2>Buy Now!</h2>
+
+<%# TODO: make this a helper: recurly_transparent_form_for(@subscription) %>
+
+<%= form_for :subscription, @subscription, :url => Recurly::Transparent.url, :html => {:method => :post} do |f| %>
+  <%= @transparent.hidden_field %>
+
+  <p>
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity %>
+  </p>
+
+  <%= fields_for :account, @account do |a| %>
+    <p>
+      <%= a.label :first_name  %>
+      <%= a.text_field :first_name %>
+    </p>
+
+    <p>
+      <%= a.label :last_name  %>
+      <%= a.text_field :last_name %>
+    </p>
+
+    <p>
+      <%= a.label :email  %>
+      <%= a.text_field :email %>
+    </p>
+
+    <p>
+      <%= a.label :company_name  %>
+      <%= a.text_field :company_name %>
+    </p>
+
+  <% end %>
+
+  <%= submit_tag "Submitting" %>
+
+<% end %>
