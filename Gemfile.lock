@@ -1,7 +1,7 @@
 PATH
   remote: ~/Recurly/gem
   specs:
-    recurly (0.3.2)
+    recurly (0.3.3)
       activeresource (>= 2.3)
       activesupport (>= 2.3)
       addressable (>= 2.2)
