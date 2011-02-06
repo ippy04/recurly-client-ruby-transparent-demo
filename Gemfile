@@ -17,7 +17,11 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'ruby-debug'
 gem "ruby-debug19"
 
-gem "recurly", :path => "~/Recurly/gem"
+# use this to load from git
+gem "recurly", :git => "git@github.com:railsjedi/recurly-client-ruby.git", :branch => "transparent"
+
+# # use this to load from local path
+# gem "recurly", :path => "~/Recurly/gem"
 
 # Bundle the extra gems:
 # gem 'bj'

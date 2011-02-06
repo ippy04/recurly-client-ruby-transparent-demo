@@ -10,7 +10,7 @@
     <%= f.text_field :quantity %>
   </p>
 
-  <%= fields_for :account, @account do |a| %>
+  <%= fields_for :account, @subscription.account do |a| %>
     <p>
       <%= a.label :first_name  %>
       <%= a.text_field :first_name %>
