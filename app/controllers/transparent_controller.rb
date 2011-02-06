@@ -1,8 +1,12 @@
-class PagesController < ApplicationController
+class TransparentController < ApplicationController
   def home
   end
 
-  def buy
+  def result
+    @result = Recurly::Transparent.results(params)
+  end
+
+  def create_subscription
     @subscription = Recurly::Subscription.new({
       :quantity => 1,
       :account => {
@@ -12,7 +16,7 @@ class PagesController < ApplicationController
     })
 
     @transparent = Recurly::Transparent.new({
-      :redirect_url => buy_submit_url,
+      :redirect_url => result_url,
       :account => {
         :account_code => "aaa"
       },
@@ -25,9 +29,4 @@ class PagesController < ApplicationController
       }
     })
   end
-
-  def buy_submit
-    @result = Recurly::Transparent.results(params)
-  end
-
 end

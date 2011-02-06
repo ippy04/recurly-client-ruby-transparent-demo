@@ -17,10 +17,10 @@ gem "ruby-debug", :platforms => :mri_18
 gem "ruby-debug19", :platforms => :mri_19
 
 # use this to load from git
-gem "recurly", :git => "git@github.com:railsjedi/recurly-client-ruby.git", :branch => "transparent"
+# gem "recurly", :git => "git@github.com:railsjedi/recurly-client-ruby.git", :branch => "transparent"
 
 # # use this to load from local path
-# gem "recurly", :path => "~/Recurly/gem"
+gem "recurly", :path => "~/Recurly/gem"
 
 # Bundle the extra gems:
 # gem 'bj'

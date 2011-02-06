@@ -2,7 +2,7 @@
 
 <%# TODO: make this a helper: recurly_transparent_form_for(@subscription) %>
 
-<%= form_for :subscription, @subscription, :url => Recurly::Transparent.url, :html => {:method => :post} do |f| %>
+<%= form_for @subscription, :as => :subscription, :url => Recurly::Transparent.url, :html => {:method => :post} do |f| %>
   <%= @transparent.hidden_field %>
 
   <p>

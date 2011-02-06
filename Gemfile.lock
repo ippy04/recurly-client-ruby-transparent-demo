@@ -1,7 +1,5 @@
-GIT
-  remote: git@github.com:railsjedi/recurly-client-ruby.git
-  revision: 294a839b4ffa49d922de88476d7574ed3f653f61
-  branch: transparent
+PATH
+  remote: ~/Recurly/gem
   specs:
     recurly (0.3.3)
       activeresource (>= 2.3)
