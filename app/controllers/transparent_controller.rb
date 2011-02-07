@@ -38,12 +38,13 @@ class TransparentController < ApplicationController
   def create_transaction
     @transaction = Recurly::Transaction.new({
       # initialize transaction fields (optional)
+
     })
 
     @transparent = Recurly::Transparent.new({
       :redirect_url => result_url,
       :account => {
-        :account_code => "from_transaction"
+        :account_code => "from_transaction_#{Time.now.to_i}"
       },
       :transaction => {
         :amount_in_cents => 500,
@@ -66,7 +67,7 @@ class TransparentController < ApplicationController
       :redirect_url => result_url,
       :account => {
         :account_code => "from_billing"
-      }
+      },
       :billing_info => {
         :ip_address => request.remote_addr
       }
