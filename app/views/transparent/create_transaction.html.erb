@@ -1,17 +1,16 @@
-<%# TODO: make this a helper: recurly_transparent_form_for(@subscription) %>
 
-<%= form_for @subscription, :as => :subscription, :url => Recurly::Transparent.url, :html => {:method => :post} do |f| %>
-  <h1>Subscribe Now</h1>
+<%= form_for @transaction, :as => :transaction, :url => Recurly::Transparent.url, :html => {:method => :post} do |f| %>
+  <h1>Buy now</h1>
 
   <%= @transparent.hidden_field %>
 
-  <div class="field">
-    <%= f.label :quantity %>
-    <%= f.text_field :quantity %>
-  </div>
-
   <h2>Account Info</h2>
-  <%= fields_for :account, @subscription.account do |a| %>
+  <%= fields_for :account, @transaction.account do |a| %>
+    <div class="field">
+      <%= a.label :username  %>
+      <%= a.text_field :username %>
+    </div>
+
     <div class="field">
       <%= a.label :first_name  %>
       <%= a.text_field :first_name %>
@@ -35,7 +34,7 @@
   <% end %>
 
   <h2>Billing Info</h2>
-  <%= fields_for :billing_info, @subscription.account.billing_info do |b| %>
+  <%= fields_for :billing_info, @transaction.account.billing_info do |b| %>
     <div class="field">
       <%= b.label :first_name  %>
       <%= b.text_field :first_name %>
@@ -79,7 +78,7 @@
   <% end %>
 
   <h2>Credit Card</h2>
-  <%= fields_for :credit_card, @subscription.account.billing_info.credit_card do |c| %>
+  <%= fields_for :credit_card, @transaction.account.billing_info.credit_card do |c| %>
     <div class="field">
       <%= c.label :number  %>
       <%= c.text_field :number %>

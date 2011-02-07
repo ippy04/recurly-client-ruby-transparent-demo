@@ -1,0 +1,75 @@
+<%# TODO: make this a helper: recurly_transparent_form_for(@subscription) %>
+
+<%= form_for @billing_info, :as => :billing_info, :url => Recurly::Transparent.url, :html => {:method => :post} do |f| %>
+  <h1>Update Billing Info</h1>
+
+  <%= @transparent.hidden_field %>
+
+  <div class="field">
+    <%= f.label :first_name  %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name  %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address1  %>
+    <%= f.text_field :address1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address2  %>
+    <%= f.text_field :address2 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city  %>
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state  %>
+    <%= f.text_field :state %>
+  </div>
+
+  <div class="field">
+    <%= f.label :zip  %>
+    <%= f.text_field :zip %>
+  </div>
+
+  <div class="field">
+    <%= f.label :country  %>
+    <%= f.text_field :country %>
+  </div>
+
+
+  <h2>Credit Card</h2>
+  <%= fields_for :credit_card, @billing_info.credit_card do |c| %>
+    <div class="field">
+      <%= c.label :number  %>
+      <%= c.text_field :number %>
+    </div>
+
+    <div class="field">
+      <%= c.label :verification_value  %>
+      <%= c.text_field :verification_value %>
+    </div>
+
+    <div class="field">
+      <%= c.label :month  %>
+      <%= c.text_field :month %>
+    </div>
+
+    <div class="field">
+      <%= c.label :year  %>
+      <%= c.text_field :year %>
+    </div>
+  <% end %>
+
+
+  <%= submit_tag "Submit" %>
+
+<% end %>
