@@ -10,9 +10,11 @@ class TransparentController < ApplicationController
     @subscription = Recurly::Subscription.new({
       :quantity => 1,
       :account => {
-        :first_name => "d000d",
-        :last_name => "man"
-      }
+        :billing_info => {
+          :credit_card => {
+          }
+        }
+      },
     })
 
     @transparent = Recurly::Transparent.new({
@@ -22,6 +24,9 @@ class TransparentController < ApplicationController
       },
       :subscription => {
         :plan_code => "AWESOME"
+      },
+      :billing_info => {
+        :ip_address => request.remote_addr
       },
       :transaction => {
         :type => "sale",

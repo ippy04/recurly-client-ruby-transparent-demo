@@ -1,38 +1,122 @@
-<h2>Buy Now!</h2>
-
 <%# TODO: make this a helper: recurly_transparent_form_for(@subscription) %>
 
+<style type="text/css" media="screen">
+  form {
+    padding: 20px;
+  }
+  form h2 {
+    margin-top: 40px;
+  }
+  form .field {
+    margin-bottom: 10px;
+  }
+  form .field label {
+    display: block;
+  }
+</style>
+
 <%= form_for @subscription, :as => :subscription, :url => Recurly::Transparent.url, :html => {:method => :post} do |f| %>
+  <h1>Buy Now!</h1>
+
   <%= @transparent.hidden_field %>
 
-  <p>
+  <div class="field">
     <%= f.label :quantity %>
     <%= f.text_field :quantity %>
-  </p>
+  </div>
 
+  <h2>Account Info</h2>
   <%= fields_for :account, @subscription.account do |a| %>
-    <p>
+    <div class="field">
       <%= a.label :first_name  %>
       <%= a.text_field :first_name %>
-    </p>
+    </div>
 
-    <p>
+    <div class="field">
       <%= a.label :last_name  %>
       <%= a.text_field :last_name %>
-    </p>
+    </div>
 
-    <p>
+    <div class="field">
       <%= a.label :email  %>
       <%= a.text_field :email %>
-    </p>
+    </div>
 
-    <p>
+    <div class="field">
       <%= a.label :company_name  %>
       <%= a.text_field :company_name %>
-    </p>
+    </div>
 
   <% end %>
 
-  <%= submit_tag "Submitting" %>
+  <h2>Billing Info</h2>
+  <%= fields_for :billing_info, @subscription.account.billing_info do |b| %>
+    <div class="field">
+      <%= b.label :first_name  %>
+      <%= b.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= b.label :last_name  %>
+      <%= b.text_field :last_name %>
+    </div>
+
+    <div class="field">
+      <%= b.label :address1  %>
+      <%= b.text_field :address1 %>
+    </div>
+
+    <div class="field">
+      <%= b.label :address2  %>
+      <%= b.text_field :address2 %>
+    </div>
+
+    <div class="field">
+      <%= b.label :city  %>
+      <%= b.text_field :city %>
+    </div>
+
+    <div class="field">
+      <%= b.label :state  %>
+      <%= b.text_field :state %>
+    </div>
+
+    <div class="field">
+      <%= b.label :zip  %>
+      <%= b.text_field :zip %>
+    </div>
+
+    <div class="field">
+      <%= b.label :country  %>
+      <%= b.text_field :country %>
+    </div>
+
+  <% end %>
+
+  <h2>Credit Card</h2>
+  <%= fields_for :credit_card, @subscription.account.billing_info.credit_card do |c| %>
+    <div class="field">
+      <%= c.label :number  %>
+      <%= c.text_field :number %>
+    </div>
+
+    <div class="field">
+      <%= c.label :verification_value  %>
+      <%= c.text_field :verification_value %>
+    </div>
+
+    <div class="field">
+      <%= c.label :month  %>
+      <%= c.text_field :month %>
+    </div>
+
+    <div class="field">
+      <%= c.label :year  %>
+      <%= c.text_field :year %>
+    </div>
+  <% end %>
+
+
+  <%= submit_tag "Submit" %>
 
 <% end %>
