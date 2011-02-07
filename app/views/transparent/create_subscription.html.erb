@@ -1,4 +1,4 @@
-<%# TODO: make this a helper: recurly_transparent_form_for(@subscription) %>
+<%# recurly_transparent_form_for(@subscription) %>
 
 <%= form_for @subscription, :as => :subscription, :url => Recurly::Transparent.create_subscription_url, :html => {:method => :post} do |f| %>
   <h1>Subscribe Now</h1>

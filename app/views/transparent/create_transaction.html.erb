@@ -1,3 +1,4 @@
+<%# recurly_transparent_transaction_form_for(@transaction) %>
 
 <%= form_for @transaction, :as => :transaction, :url => Recurly::Transparent.create_transaction_url, :html => {:method => :post} do |f| %>
   <h1>Buy now</h1>

@@ -1,4 +1,4 @@
-<%# TODO: make this a helper: recurly_transparent_form_for(@subscription) %>
+<%# recurly_transparent_update_billing_form_for(@billing_info) %>
 
 <%= form_for @billing_info, :as => :billing_info, :url => Recurly::Transparent.update_billing_url, :html => {:method => :post} do |f| %>
   <h1>Update Billing Info</h1>
