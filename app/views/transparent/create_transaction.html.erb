@@ -5,6 +5,8 @@
 
   <%= @transparent.hidden_field %>
 
+  <%= f.error_messages %>
+
   <h2>Account Info</h2>
   <%= fields_for :account, @transaction.account do |a| %>
     <div class="field">
@@ -76,31 +78,30 @@
       <%= b.text_field :country %>
     </div>
 
+    <h2>Credit Card</h2>
+    <%= b.fields_for :credit_card, @transaction.account.billing_info.credit_card do |c| %>
+      <div class="field">
+        <%= c.label :number  %>
+        <%= c.text_field :number %>
+      </div>
+
+      <div class="field">
+        <%= c.label :verification_value  %>
+        <%= c.text_field :verification_value, :maxlength => 4 %>
+      </div>
+
+      <div class="field">
+        <%= c.label :month  %>
+        <%= c.text_field :month %>
+      </div>
+
+      <div class="field">
+        <%= c.label :year  %>
+        <%= c.text_field :year %>
+      </div>
+    <% end %>
+  
   <% end %>
-
-  <h2>Credit Card</h2>
-  <%= fields_for :credit_card, @transaction.account.billing_info.credit_card do |c| %>
-    <div class="field">
-      <%= c.label :number  %>
-      <%= c.text_field :number %>
-    </div>
-
-    <div class="field">
-      <%= c.label :verification_value  %>
-      <%= c.text_field :verification_value %>
-    </div>
-
-    <div class="field">
-      <%= c.label :month  %>
-      <%= c.text_field :month %>
-    </div>
-
-    <div class="field">
-      <%= c.label :year  %>
-      <%= c.text_field :year %>
-    </div>
-  <% end %>
-
 
   <%= submit_tag "Submit" %>
 

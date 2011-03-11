@@ -5,6 +5,8 @@
 
   <%= @transparent.hidden_field %>
 
+  <%= f.error_messages %>
+
   <div class="field">
     <%= f.label :first_name  %>
     <%= f.text_field :first_name %>
@@ -47,7 +49,7 @@
 
 
   <h2>Credit Card</h2>
-  <%= fields_for :credit_card, @billing_info.credit_card do |c| %>
+  <%= f.fields_for :credit_card, @billing_info.credit_card do |c| %>
     <div class="field">
       <%= c.label :number  %>
       <%= c.text_field :number %>

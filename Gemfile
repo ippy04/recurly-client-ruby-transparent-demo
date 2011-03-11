@@ -1,32 +1,21 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'rails', '>=3.0.3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 gem "ruby-debug", :platforms => :mri_18
 gem "ruby-debug19", :platforms => :mri_19
 
+gem 'dynamic_form'
+
+# use this to load from rubygems (preferred)
+gem "recurly", '>=0.3.4'
+
 # use this to load from git
-# gem "recurly", :git => "git@github.com:railsjedi/recurly-client-ruby.git", :branch => "transparent"
+#gem "recurly", :git => "git@github.com:recurly/recurly-client-ruby.git"
 
 # # use this to load from local path
-gem "recurly", :path => "~/Recurly/gem"
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
+#gem "recurly", :path => "~/Development/recurly/gems/client-ruby-transparent"
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

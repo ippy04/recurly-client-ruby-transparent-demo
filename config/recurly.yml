@@ -1,5 +1,6 @@
 ---
-username: railsjedi+bikeshop2@gmail.com
-site: http://bike-shop2-test.recurly.local:3000
-password: asdfasdf
-private_key: 136cc2c4c76842e7a47b3b91414691b1
+username: 
+environment: :sandbox
+subdomain:
+password: 
+private_key: 
