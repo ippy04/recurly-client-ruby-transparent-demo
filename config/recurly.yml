@@ -1,6 +1,7 @@
----
-username: 
-environment: :sandbox
-subdomain:
-password: 
-private_key: 
+--- 
+username: api-test@emeryco3asdf.com
+environment: development
+subdomain: emeryco3-test
+password: 44fc5c67715a4c688ab9cdb9de53cedf     
+private_key: 0812ea5c916d409a83b35d106f1f52b1
+site: https://api-production.recurly.com

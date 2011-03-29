@@ -6,24 +6,16 @@
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
+
 <body>
-
-  <style type="text/css" media="screen">
-    form {
-      padding: 20px;
-    }
-    form h2 {
-      margin-top: 40px;
-    }
-    form .field {
-      margin-bottom: 10px;
-    }
-    form .field label {
-      display: block;
-    }
-  </style>
-
-  <%= yield %>
-
+  
+<nav>
+  <%= link_to 'Create Subscription', create_subscription_path %>
+  <%= link_to 'Create Transaction', create_transaction_path %>
+  <%= link_to 'Update Billing', update_billing_path %>
+</nav>
+  
+<%= yield %>
 </body>
+
 </html>
