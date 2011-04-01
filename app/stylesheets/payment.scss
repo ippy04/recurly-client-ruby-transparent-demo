@@ -44,9 +44,8 @@ form.recurly_payment {
 
     ul {
       width: 100%;
-      min-height: 60px;
+      min-height: 48px;
       clear: both; // Clear any previous fields
-      padding-bottom: 20px;
 
       li {
         float: left;
@@ -54,6 +53,7 @@ form.recurly_payment {
         width: $width - $margin; // Default field is full width
         min-height: 60px;
         margin-left: 20px;
+        margin-bottom: 10px;
 
         // Special field sizes
         &.first_name, &.last_name {
@@ -68,7 +68,6 @@ form.recurly_payment {
           #billing_info_credit_card_month { width: $width / 8; }
           #billing_info_credit_card_year { width: $width / 6; margin-left: 10px; }
         }
-     
       }
 
       &.address li {
@@ -109,14 +108,14 @@ form.recurly_payment {
     font-size: 14px;
     padding: 5px;
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     border: 1px solid #989;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     background: white;
     box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);    
-      
+
     font-size: 14px;
   }
 
@@ -129,6 +128,9 @@ form.recurly_payment {
     font-family: inherit;
   }
   
+  label.error {
+    color: #911;
+  }
   
   button[type=submit] {
     float: right;

@@ -71,7 +71,7 @@
       <ul class="credit_card">
         <li class="card_number">
           <%= c.label :number, 'Credit Card Number'  %>
-          <%= c.text_field :number, :maxlength => 22 %>
+          <%= c.text_field :number, :maxlength => 22, :class => 'required creditcard' %>
         </li>
 
         <li class="cvv">

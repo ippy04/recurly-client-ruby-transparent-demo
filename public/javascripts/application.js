@@ -1,6 +1,6 @@
 
 $(function(){
-  
+
   // Start jquery.validate
   $('form.recurly_payment').validate({
     submitHandler: function (form) {
@@ -8,6 +8,5 @@ $(function(){
       form.submit();
     }
   });
-
-
+  
 });
