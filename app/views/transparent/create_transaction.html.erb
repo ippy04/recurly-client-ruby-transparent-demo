@@ -1,108 +1,113 @@
 <%# recurly_transparent_transaction_form_for(@transaction) %>
 
-<%= form_for @transaction, :as => :transaction, :url => Recurly::Transparent.create_transaction_url, :html => {:method => :post} do |f| %>
-  <h1>Buy now</h1>
-
+<%= form_for @transaction, :as => :transaction, :url => Recurly::Transparent.create_transaction_url, :html => {:method => :post, :class => 'recurly_payment'} do |f| %>
   <%= @transparent.hidden_field %>
 
-  <%= f.error_messages %>
+  <h2>Buy now</h2>
 
-  <h2>Account Info</h2>
-  <%= fields_for :account, @transaction.account do |a| %>
-    <div class="field">
-      <%= a.label :username  %>
-      <%= a.text_field :username %>
-    </div>
+  <div class="errors">
+    <ul>
+      <li>There was an error with bla.</li>
+    </ul>
+  </div>
 
-    <div class="field">
-      <%= a.label :first_name  %>
-      <%= a.text_field :first_name %>
-    </div>
+  <fieldset>
+    <legend>Account Info</legend>
 
-    <div class="field">
-      <%= a.label :last_name  %>
-      <%= a.text_field :last_name %>
-    </div>
-
-    <div class="field">
-      <%= a.label :email  %>
-      <%= a.text_field :email %>
-    </div>
-
-    <div class="field">
-      <%= a.label :company_name  %>
-      <%= a.text_field :company_name %>
-    </div>
-
-  <% end %>
-
-  <h2>Billing Info</h2>
-  <%= fields_for :billing_info, @transaction.account.billing_info do |b| %>
-    <div class="field">
-      <%= b.label :first_name  %>
-      <%= b.text_field :first_name %>
-    </div>
-
-    <div class="field">
-      <%= b.label :last_name  %>
-      <%= b.text_field :last_name %>
-    </div>
-
-    <div class="field">
-      <%= b.label :address1  %>
-      <%= b.text_field :address1 %>
-    </div>
-
-    <div class="field">
-      <%= b.label :address2  %>
-      <%= b.text_field :address2 %>
-    </div>
-
-    <div class="field">
-      <%= b.label :city  %>
-      <%= b.text_field :city %>
-    </div>
-
-    <div class="field">
-      <%= b.label :state  %>
-      <%= b.text_field :state %>
-    </div>
-
-    <div class="field">
-      <%= b.label :zip  %>
-      <%= b.text_field :zip %>
-    </div>
-
-    <div class="field">
-      <%= b.label :country  %>
-      <%= b.text_field :country %>
-    </div>
-
-    <h2>Credit Card</h2>
-    <%= b.fields_for :credit_card, @transaction.account.billing_info.credit_card do |c| %>
-      <div class="field">
-        <%= c.label :number  %>
-        <%= c.text_field :number %>
-      </div>
-
-      <div class="field">
-        <%= c.label :verification_value  %>
-        <%= c.text_field :verification_value, :maxlength => 4 %>
-      </div>
-
-      <div class="field">
-        <%= c.label :month  %>
-        <%= c.text_field :month %>
-      </div>
-
-      <div class="field">
-        <%= c.label :year  %>
-        <%= c.text_field :year %>
-      </div>
+    <%= fields_for :account, @transaction.account do |a| %>
+    <ul>
+      <li class="first_name">
+        <%= a.label :first_name %>
+        <%= a.text_field :first_name %>
+      </li>
+      <li class="last_name">
+        <%= a.label :last_name  %>
+        <%= a.text_field :last_name %>
+      </li>
+      <li class="email">
+        <%= a.label :email  %>
+        <%= a.text_field :email %>
+      </li>
+      <li class="company">
+        <%= a.label :company_name  %>
+        <%= a.text_field :company_name %>
+      </li>
+    </ul>
     <% end %>
-  
-  <% end %>
+  </fieldset>
 
-  <%= submit_tag "Submit" %>
+  <%= fields_for :billing_info, @transaction.account.billing_info do |b| %>
+
+  <fieldset class="billing">
+    <legend>Billing Info</legend>
+    
+    <div class="accepted_cards">
+      <%= image_tag 'credit_cards/amex.png', :alt => 'American Express' %>
+      <%= image_tag 'credit_cards/discover.png', :alt => 'Discover' %>
+      <%= image_tag 'credit_cards/mastercard.png', :alt => 'Mastercard' %>
+      <%= image_tag 'credit_cards/visa.png', :alt => 'Visa' %>
+    </div>
+
+    <ul>
+      <li class="first_name">
+        <%= b.label :first_name  %>
+        <%= b.text_field :first_name %>
+      </li>
+      <li class="last_name">
+        <%= b.label :last_name  %>
+        <%= b.text_field :last_name %>
+      </li>
+      
+      <%= b.fields_for :credit_card, @transaction.account.billing_info.credit_card do |c| %>
+      <ul class="credit_card">
+        <li class="card_number">
+          <%= c.label :number, 'Credit Card Number'  %>
+          <%= c.text_field :number, :maxlength => 22 %>
+        </li>
+
+        <li class="cvv">
+          <%= c.label :verification_value, 'CVV'  %>
+          <%= c.text_field :verification_value, :maxlength => 4 %>
+        </li>
+
+        <li class="expires">
+          <%= c.label :month, 'Expires:' %>
+          <%= c.select :month,  1..12 %><%= c.select :year, Time.now.year..(Time.now.year + 10) %>
+        </li>
+
+      </ul>
+      <% end %>
+
+      <ul class="address">
+        <li>
+          <%= b.label :address1, "Address" %>
+          <%= b.text_field :address1, :placeholder => '123 Example St' %>
+        </li>
+        <li>
+          <%= b.label :address2, "Address Line 2" %>
+          <%= b.text_field :address2, :placeholder => 'Apt, Suite' %>
+        </li>
+        <li class="city">
+          <%= b.label :city %>
+          <%= b.text_field :city %>
+        </li>
+        <li class="state">
+          <%= b.label :state %>
+          <%= b.text_field :state %>
+        </li>
+        <li class="zip">
+          <%= b.label :zip %>
+          <%= b.text_field :zip %>
+        </li>
+        <li class="country">
+          <%= b.label :country %>
+          <%= b.country_select(:country, [], :class => 'country', :include_blank => true) %>
+        </li>
+      </ul>
+    </ul>
+
+  <% end %>
+  
+  <button type="submit" autocomplete="off">Subscribe</button>
 
 <% end %>

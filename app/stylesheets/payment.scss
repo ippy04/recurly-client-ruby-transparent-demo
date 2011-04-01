@@ -6,11 +6,17 @@ form.recurly_payment {
 
   overflow: hidden;
 
-  ul.errors {
-    border: 1px solid #911;
+  .errors ul {
+    border: 1px solid #cc9;
+    background: #ffc;
+    margin: 0 0 40px 0;
+    padding: 10px;
+    list-style-type: circle;
 
     li {
-      margin: 0 auto;
+      margin-left: 20px;
+      padding: 0px;
+      color: #911;
     }
   }
 

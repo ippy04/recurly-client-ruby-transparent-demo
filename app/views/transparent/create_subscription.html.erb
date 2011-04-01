@@ -3,7 +3,13 @@
 <%= form_for @subscription, :as => :subscription, :url => Recurly::Transparent.create_subscription_url, :html => {:method => :post, :class => 'recurly_payment'} do |f| %>
   <%= @transparent.hidden_field %>
 
-  <h2>Subscribe to Plan: 123</h2>
+  <h2>Subscribe to Plan Code: <code><%= @transparent.data[:subscription][:plan_code] %></code></h2>
+
+  <div class="errors">
+    <ul>
+      <li>There was an error with bla.</li>
+    </ul>
+  </div>
 
   <fieldset class="subscription">
     <ul>

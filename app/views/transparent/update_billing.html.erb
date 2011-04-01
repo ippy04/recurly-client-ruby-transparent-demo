@@ -1,77 +1,79 @@
 <%# recurly_transparent_update_billing_form_for(@billing_info) %>
 
-<%= form_for @billing_info, :as => :billing_info, :url => Recurly::Transparent.update_billing_url, :html => {:method => :post} do |f| %>
-  <h1>Update Billing Info</h1>
-
+<%= form_for @billing_info, :as => :billing_info, :url => Recurly::Transparent.update_billing_url, :html => {:method => :post, :class => 'recurly_payment'} do |f| %>
   <%= @transparent.hidden_field %>
 
-  <%= f.error_messages %>
+  <h2>Update Billing Info</h2>
 
-  <div class="field">
-    <%= f.label :first_name  %>
-    <%= f.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name  %>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address1  %>
-    <%= f.text_field :address1 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address2  %>
-    <%= f.text_field :address2 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :city  %>
-    <%= f.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= f.label :state  %>
-    <%= f.text_field :state %>
-  </div>
-
-  <div class="field">
-    <%= f.label :zip  %>
-    <%= f.text_field :zip %>
-  </div>
-
-  <div class="field">
-    <%= f.label :country  %>
-    <%= f.text_field :country %>
-  </div>
-
-
-  <h2>Credit Card</h2>
-  <%= f.fields_for :credit_card, @billing_info.credit_card do |c| %>
-    <div class="field">
-      <%= c.label :number  %>
-      <%= c.text_field :number %>
+  <fieldset class="billing">
+    <legend>Billing Info</legend>
+    
+    <div class="accepted_cards">
+      <%= image_tag 'credit_cards/amex.png', :alt => 'American Express' %>
+      <%= image_tag 'credit_cards/discover.png', :alt => 'Discover' %>
+      <%= image_tag 'credit_cards/mastercard.png', :alt => 'Mastercard' %>
+      <%= image_tag 'credit_cards/visa.png', :alt => 'Visa' %>
     </div>
 
-    <div class="field">
-      <%= c.label :verification_value  %>
-      <%= c.text_field :verification_value %>
-    </div>
+    <ul>
+      <li class="first_name">
+        <%= f.label :first_name  %>
+        <%= f.text_field :first_name %>
+      </li>
+      <li class="last_name">
+        <%= f.label :last_name  %>
+        <%= f.text_field :last_name %>
+      </li>
+      
+      <%= f.fields_for :credit_card, @billing_info.credit_card do |c| %>
+      <ul class="credit_card">
+        <li class="card_number">
+          <%= c.label :number, 'Credit Card Number'  %>
+          <%= c.text_field :number, :maxlength => 22 %>
+        </li>
 
-    <div class="field">
-      <%= c.label :month  %>
-      <%= c.text_field :month %>
-    </div>
+        <li class="cvv">
+          <%= c.label :verification_value, 'CVV'  %>
+          <%= c.text_field :verification_value, :maxlength => 4 %>
+        </li>
 
-    <div class="field">
-      <%= c.label :year  %>
-      <%= c.text_field :year %>
-    </div>
-  <% end %>
+        <li class="expires">
+          <%= c.label :month, 'Expires:' %>
+          <%= c.select :month,  1..12 %><%= c.select :year, Time.now.year..(Time.now.year + 10) %>
+        </li>
 
+      </ul>
+      <% end %>
 
-  <%= submit_tag "Submit" %>
+      <ul class="address">
+        <li>
+          <%= f.label :address1, "Address" %>
+          <%= f.text_field :address1, :placeholder => '123 Example St' %>
+        </li>
+        <li>
+          <%= f.label :address2, "Address Line 2" %>
+          <%= f.text_field :address2, :placeholder => 'Apt, Suite' %>
+        </li>
+        <li class="city">
+          <%= f.label :city %>
+          <%= f.text_field :city %>
+        </li>
+        <li class="state">
+          <%= f.label :state %>
+          <%= f.text_field :state %>
+        </li>
+        <li class="zip">
+          <%= f.label :zip %>
+          <%= f.text_field :zip %>
+        </li>
+        <li class="country">
+          <%= f.label :country %>
+          <%= f.country_select(:country, [], :class => 'country', :include_blank => true) %>
+        </li>
+      </ul>
+    </ul>
+  </fieldset>
+
+  <button type="submit" autocomplete="off">Subscribe</button>
 
 <% end %>

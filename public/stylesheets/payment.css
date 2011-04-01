@@ -4,14 +4,20 @@ form.recurly_payment {
   overflow: hidden;
 }
 /* line 9, ../../app/stylesheets/payment.scss */
-form.recurly_payment ul.errors {
-  border: 1px solid #911;
+form.recurly_payment .errors ul {
+  border: 1px solid #cc9;
+  background: #ffc;
+  margin: 0 0 40px 0;
+  padding: 10px;
+  list-style-type: circle;
 }
-/* line 12, ../../app/stylesheets/payment.scss */
-form.recurly_payment ul.errors li {
-  margin: 0 auto;
+/* line 16, ../../app/stylesheets/payment.scss */
+form.recurly_payment .errors ul li {
+  margin-left: 20px;
+  padding: 0px;
+  color: #911;
 }
-/* line 19, ../../app/stylesheets/payment.scss */
+/* line 25, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset {
   width: 100%;
   margin: 0;
@@ -21,7 +27,7 @@ form.recurly_payment fieldset {
   overflow: hidden;
   margin-bottom: 20px;
 }
-/* line 28, ../../app/stylesheets/payment.scss */
+/* line 34, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset legend {
   position: normal;
   display: block;
@@ -32,14 +38,14 @@ form.recurly_payment fieldset legend {
   margin-left: 20px;
   color: black;
 }
-/* line 39, ../../app/stylesheets/payment.scss */
+/* line 45, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset ul {
   width: 100%;
   min-height: 60px;
   clear: both;
   padding-bottom: 20px;
 }
-/* line 45, ../../app/stylesheets/payment.scss */
+/* line 51, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset ul li {
   float: left;
   overflow: hidden;
@@ -47,19 +53,19 @@ form.recurly_payment fieldset ul li {
   min-height: 60px;
   margin-left: 20px;
 }
-/* line 53, ../../app/stylesheets/payment.scss */
+/* line 59, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset ul li.first_name, form.recurly_payment fieldset ul li.last_name {
   width: 160px;
 }
-/* line 57, ../../app/stylesheets/payment.scss */
+/* line 63, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset ul li.card_number {
   width: 250px;
 }
-/* line 58, ../../app/stylesheets/payment.scss */
+/* line 64, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset ul li.cvv {
   width: 70px;
 }
-/* line 61, ../../app/stylesheets/payment.scss */
+/* line 67, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset ul li.expires label {
   float: left;
   width: 45px;
@@ -67,43 +73,43 @@ form.recurly_payment fieldset ul li.expires label {
   line-height: 22px;
   vertical-align: middle;
 }
-/* line 62, ../../app/stylesheets/payment.scss */
+/* line 68, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset ul li.expires #billing_info_credit_card_month {
   width: 45px;
 }
-/* line 63, ../../app/stylesheets/payment.scss */
+/* line 69, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset ul li.expires #billing_info_credit_card_year {
   width: 60px;
   margin-left: 10px;
 }
-/* line 71, ../../app/stylesheets/payment.scss */
+/* line 77, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset ul.address li.state {
   width: 220px;
 }
-/* line 72, ../../app/stylesheets/payment.scss */
+/* line 78, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset ul.address li.zip {
   width: 100px;
 }
-/* line 77, ../../app/stylesheets/payment.scss */
+/* line 83, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset.subscription ul li.quantity {
   width: 90px;
 }
-/* line 80, ../../app/stylesheets/payment.scss */
+/* line 86, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset.billing .accepted_cards {
   float: right;
 }
-/* line 82, ../../app/stylesheets/payment.scss */
+/* line 88, ../../app/stylesheets/payment.scss */
 form.recurly_payment fieldset.billing .accepted_cards img {
   margin-left: 5px;
 }
-/* line 87, ../../app/stylesheets/payment.scss */
+/* line 93, ../../app/stylesheets/payment.scss */
 form.recurly_payment label {
   display: block;
   font-size: 13px;
   color: #333;
   font-weight: bold;
 }
-/* line 96, ../../app/stylesheets/payment.scss */
+/* line 102, ../../app/stylesheets/payment.scss */
 form.recurly_payment input[type=text] {
   width: 100%;
   box-sizing: border-box;
@@ -122,7 +128,7 @@ form.recurly_payment input[type=text] {
   box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
   font-size: 14px;
 }
-/* line 117, ../../app/stylesheets/payment.scss */
+/* line 123, ../../app/stylesheets/payment.scss */
 form.recurly_payment select {
   width: 100%;
   font-size: 14px;
@@ -131,7 +137,7 @@ form.recurly_payment select {
   -moz-box-sizing: border-box;
   font-family: inherit;
 }
-/* line 127, ../../app/stylesheets/payment.scss */
+/* line 133, ../../app/stylesheets/payment.scss */
 form.recurly_payment button[type=submit] {
   float: right;
   margin: 20px 0;
@@ -153,12 +159,12 @@ form.recurly_payment button[type=submit] {
   -webkit-box-shadow: inset 0 1px 0px 0 rgba(255, 255, 255, 0.3), inset 0 10px 15px rgba(255, 255, 255, 0.5);
   -moz-box-shadow: inset 0 1px 0px 0 rgba(255, 255, 255, 0.3), inset 0 10px 15px rgba(255, 255, 255, 0.5);
 }
-/* line 150, ../../app/stylesheets/payment.scss */
+/* line 156, ../../app/stylesheets/payment.scss */
 form.recurly_payment button[type=submit]:hover, form.recurly_payment button[type=submit]:active {
   border-color: #390;
   background-color: #8b0;
 }
-/* line 155, ../../app/stylesheets/payment.scss */
+/* line 161, ../../app/stylesheets/payment.scss */
 form.recurly_payment button[type=submit]:active {
   box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1);

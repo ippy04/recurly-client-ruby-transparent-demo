@@ -28,7 +28,7 @@ class TransparentController < ApplicationController
         :account_code => "from_subscription_#{Time.now.to_i}",
       },
       :subscription => {
-        :plan_code => "gold"
+        :plan_code => "test"
       },
     })
   end

@@ -34,15 +34,20 @@ nav {
   float: left;
 
   a {
+    display: block;
     width: 210px;
     height: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
-
 
 form {
   float: left;
   padding-left: 40px;
-  border-left: 1px solid #ccc;
+  border-left: 1px dashed #ccc;
+}
+
+
+code {
+  background: #ddd;
 }

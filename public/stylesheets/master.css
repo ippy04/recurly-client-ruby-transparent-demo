@@ -40,14 +40,20 @@ nav {
 }
 /* line 36, ../../app/stylesheets/master.scss */
 nav a {
+  display: block;
   width: 210px;
   height: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* line 44, ../../app/stylesheets/master.scss */
 form {
   float: left;
   padding-left: 40px;
-  border-left: 1px solid #ccc;
+  border-left: 1px dashed #ccc;
+}
+
+/* line 51, ../../app/stylesheets/master.scss */
+code {
+  background: #ddd;
 }
