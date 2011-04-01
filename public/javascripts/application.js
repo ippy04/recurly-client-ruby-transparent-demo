@@ -1,2 +1,13 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+
+$(function(){
+  
+  // Start jquery.validate
+  $('form.recurly_payment').validate({
+    submitHandler: function (form) {
+      $(form).addClass('submitting').find('*[type=submit]').attr('disabled', 'disabled').text('Please wait...');
+      form.submit();
+    }
+  });
+
+
+});

@@ -1,0 +1,162 @@
+$width: 360px;
+$margin: 20px;
+
+form.recurly_payment {
+  width: $width;
+
+  overflow: hidden;
+
+  ul.errors {
+    border: 1px solid #911;
+
+    li {
+      margin: 0 auto;
+    }
+  }
+
+  // Layout
+
+  fieldset {
+    width: 100%;
+    margin: 0;
+    display: block;
+    position: relative;
+    border: none;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    legend {
+      position: normal;
+      display: block;
+      float: left;
+      font-size: 18px;
+      font-weight: bold;
+      padding-bottom: 20px;
+      margin-left: 20px;
+      color: black;
+    }
+
+    ul {
+      width: 100%;
+      min-height: 60px;
+      clear: both; // Clear any previous fields
+      padding-bottom: 20px;
+
+      li {
+        float: left;
+        overflow: hidden;
+        width: $width - $margin; // Default field is full width
+        min-height: 60px;
+        margin-left: 20px;
+
+        // Special field sizes
+        &.first_name, &.last_name {
+          width: $width / 2 - $margin;
+        }
+
+        &.card_number { width: $width / 4 * 3 - $margin; }
+        &.cvv { width: $width / 4 - $margin; }
+        
+        &.expires {
+          label { float: left; width: $width / 8; margin-right: 20px; line-height: 22px; vertical-align: middle; }
+          #billing_info_credit_card_month { width: $width / 8; }
+          #billing_info_credit_card_year { width: $width / 6; margin-left: 10px; }
+        }
+     
+      }
+
+      &.address li {
+        &.country {}
+        &.city {}
+        &.state { width: $width/3 * 2 - $margin; }
+        &.zip { width: $width/3 - $margin; }
+      }
+
+    } // /ul
+
+    &.subscription ul li.quantity { width: $width / 4; }
+    
+
+    &.billing .accepted_cards {
+      float: right;
+      img { margin-left: 5px; }
+    }
+    
+  } // /fieldset
+  
+  label {
+    display: block;
+    font-size: 13px;
+    color: #333;
+    font-weight: bold;
+  }
+
+  // General
+
+  input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+
+    font-family: inherit;
+    font-size: 14px;
+    padding: 5px;
+    display: block;
+    margin-bottom: 20px;
+    border: 1px solid #989;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    background: white;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);    
+      
+    font-size: 14px;
+  }
+
+  select {
+    width: 100%;
+    font-size: 14px;
+    box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    font-family: inherit;
+  }
+  
+  
+  button[type=submit] {
+    float: right;
+    margin: 20px 0;
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    border: 1px solid #a90;
+    color: #130;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    font-size: 18px;
+    background-color: #db0;
+    padding: 5px 15px;
+    cursor: pointer;
+
+    border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      
+    box-shadow: inset 0 1px 0px 0 rgba(255,255,255,0.3), inset 0 10px 15px rgba(255,255,255,0.5);
+      -webkit-box-shadow: inset 0 1px 0px 0 rgba(255,255,255,0.3), inset 0 10px 15px rgba(255,255,255,0.5);
+      -moz-box-shadow: inset 0 1px 0px 0 rgba(255,255,255,0.3), inset 0 10px 15px rgba(255,255,255,0.5);
+    
+    &:hover, &:active {
+      border-color: #390;
+      background-color: #8b0;
+    }
+
+    &:active {
+      box-shadow: inset 0 5px 5px rgba(0,0,0,0.1);
+        -webkit-box-shadow: inset 0 5px 5px rgba(0,0,0,0.1);
+        -moz-box-shadow: inset 0 5px 5px rgba(0,0,0,0.1);
+      bottom: -1px;
+    } 
+  }
+}

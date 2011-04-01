@@ -42,6 +42,7 @@ GEM
     linecache (0.43)
     linecache19 (0.5.11)
       ruby_core_source (>= 0.1.4)
+    localized_country_select (0.0.1)
     mail (2.2.14)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -104,6 +105,7 @@ PLATFORMS
 
 DEPENDENCIES
   dynamic_form
+  localized_country_select
   rails (>= 3.0.3)
   recurly (>= 0.3.4)
   ruby-debug

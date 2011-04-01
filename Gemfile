@@ -11,6 +11,10 @@ gem 'dynamic_form'
 # use this to load from rubygems (preferred)
 gem "recurly", '>=0.3.4'
 
+
+# INTERNATIONALIZATION
+gem 'localized_country_select'
+
 # use this to load from git
 #gem "recurly", :git => "git@github.com:recurly/recurly-client-ruby.git"
 
