@@ -1,9 +1,9 @@
-<%# recurly_transparent_update_billing_form_for(@billing_info) %>
-
 <%= form_for @billing_info, :as => :billing_info, :url => Recurly::Transparent.update_billing_url, :html => {:method => :post, :class => 'recurly_payment'} do |f| %>
   <%= @transparent.hidden_field %>
 
   <h2>Update Billing Info</h2>
+  
+  <%= render :partial => 'errors', :locals => { :object => f.object } %>
 
   <fieldset class="billing">
     <legend>Billing Info</legend>
@@ -11,7 +11,7 @@
     <div class="accepted_cards">
       <%= image_tag 'credit_cards/amex.png', :alt => 'American Express' %>
       <%= image_tag 'credit_cards/discover.png', :alt => 'Discover' %>
-      <%= image_tag 'credit_cards/mastercard.png', :alt => 'Mastercard' %>
+      <%= image_tag 'credit_cards/mastercard.png', :alt => 'MasterCard' %>
       <%= image_tag 'credit_cards/visa.png', :alt => 'Visa' %>
     </div>
 
@@ -26,6 +26,9 @@
       </li>
       
       <%= f.fields_for :credit_card, @billing_info.credit_card do |c| %>
+      
+      <%= render :partial => 'errors', :locals => { :object => c.object } %>
+
       <ul class="credit_card">
         <li class="card_number">
           <%= c.label :number, 'Credit Card Number'  %>

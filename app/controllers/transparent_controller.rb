@@ -7,6 +7,7 @@ class TransparentController < ApplicationController
   def result
     @return_results = flash[:transparent_post_result] || Recurly::Transparent.results(params)
   rescue Recurly::ValidationsFailed => ex
+    Rails.logger.debug "Transparent Post: Validation failed"
     @return_results = ex
   end
 
@@ -17,7 +18,7 @@ class TransparentController < ApplicationController
       :account => {
         :billing_info => {
           :credit_card => {
-          }
+          },
         }
       },
     })
@@ -28,7 +29,7 @@ class TransparentController < ApplicationController
         :account_code => "from_subscription_#{Time.now.to_i}",
       },
       :subscription => {
-        :plan_code => "test"
+        :plan_code => "gold"
       },
     })
   end
@@ -55,7 +56,6 @@ class TransparentController < ApplicationController
   def update_billing
     @billing_info = @result || Recurly::BillingInfo.new({
       # initialize billing fields (optional)
-
     })
 
     @transparent = Recurly::Transparent.new({
@@ -86,6 +86,7 @@ class TransparentController < ApplicationController
       true
     end
   rescue Recurly::ValidationsFailed => ex
+    Rails.logger.debug "Transparent Post: Validation failed"
     @result = ex.model
   end
 end

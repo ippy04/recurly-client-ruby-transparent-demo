@@ -1,15 +1,9 @@
-<%# recurly_transparent_form_for(@subscription) %>
-
 <%= form_for @subscription, :as => :subscription, :url => Recurly::Transparent.create_subscription_url, :html => {:method => :post, :class => 'recurly_payment'} do |f| %>
   <%= @transparent.hidden_field %>
 
   <h2>Subscribe to Plan Code: <code><%= @transparent.data[:subscription][:plan_code] %></code></h2>
 
-  <div class="errors">
-    <ul>
-      <li>There was an error with bla.</li>
-    </ul>
-  </div>
+  <%= render :partial => 'errors', :locals => { :object => f.object } %>
 
   <fieldset class="subscription">
     <ul>
@@ -24,6 +18,9 @@
     <legend>Account Info</legend>
 
     <%= fields_for :account, @subscription.account do |a| %>
+
+    <%= render :partial => 'errors', :locals => { :object => a.object } %>
+
     <ul>
       <li class="first_name">
         <%= a.label :first_name %>
@@ -53,9 +50,11 @@
     <div class="accepted_cards">
       <%= image_tag 'credit_cards/amex.png', :alt => 'American Express' %>
       <%= image_tag 'credit_cards/discover.png', :alt => 'Discover' %>
-      <%= image_tag 'credit_cards/mastercard.png', :alt => 'Mastercard' %>
+      <%= image_tag 'credit_cards/mastercard.png', :alt => 'MasterCard' %>
       <%= image_tag 'credit_cards/visa.png', :alt => 'Visa' %>
     </div>
+    
+    <%= render :partial => 'errors', :locals => { :object => b.object } %>
 
     <ul>
       <li class="first_name">
@@ -68,6 +67,9 @@
       </li>
       
       <%= b.fields_for :credit_card, @subscription.account.billing_info.credit_card do |c| %>
+
+      <%= render :partial => 'errors', :locals => { :object => c.object } %>
+
       <ul class="credit_card">
         <li class="card_number">
           <%= c.label :number, 'Credit Card Number'  %>
