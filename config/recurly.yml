@@ -1,7 +1,7 @@
 --- 
-username: api-test@emeryco3asdf.com
+username: api-test@emeryco3.com
 environment: development
 subdomain: emeryco3-test
-password: 44fc5c67715a4c688ab9cdb9de53cedf     
+password: 1340b1d2212043febc33c5ef7dd238f5 
 private_key: 0812ea5c916d409a83b35d106f1f52b1
 site: https://api-production.recurly.com

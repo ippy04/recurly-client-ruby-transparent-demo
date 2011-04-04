@@ -7,16 +7,19 @@ form.recurly_payment {
   overflow: hidden;
 
   .errors ul {
+    width: auto;
     border: 1px solid #cc9;
     background: #ffc;
-    margin: 0 0 40px 0;
+    margin: 0 0 20px 20px;
     padding: 10px;
-    list-style-type: circle;
+    list-style-type: disc;
+    clear: both;
 
     li {
       margin-left: 20px;
       padding: 0px;
       color: #911;
+      font-size: 14px;
     }
   }
 
@@ -42,12 +45,13 @@ form.recurly_payment {
       color: black;
     }
 
-    ul {
+    > ul,
+    > ul > ul {
       width: 100%;
       min-height: 48px;
       clear: both; // Clear any previous fields
-
-      li {
+      
+      > li {
         float: left;
         overflow: hidden;
         width: $width - $margin; // Default field is full width
@@ -65,12 +69,19 @@ form.recurly_payment {
         
         &.expires {
           label { float: left; width: $width / 8; margin-right: 20px; line-height: 22px; vertical-align: middle; }
-          #billing_info_credit_card_month { width: $width / 8; }
-          #billing_info_credit_card_year { width: $width / 6; margin-left: 10px; }
+          
+          li {
+            float: left;
+            margin-left: 10px;
+            &.month { width: $width / 8; }
+            &.year { width: $width / 6; }
+          }
+//          #billing_info_credit_card_month { width: $width / 8; }
+//          #billing_info_credit_card_year { width: $width / 6; margin-left: 10px; }
         }
       }
 
-      &.address li {
+      &.address > li {
         &.country {}
         &.city {}
         &.state { width: $width/3 * 2 - $margin; }
@@ -126,6 +137,11 @@ form.recurly_payment {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
     font-family: inherit;
+    color: inherit;
+
+    > option {
+      color: inherit;
+    }
   }
   
   label.error {

@@ -7,11 +7,10 @@
 
   <%= render :partial => 'errors', :locals => { :object => f.object } %>
 
+  <%= fields_for :account, @transaction.account do |a| %>
   <fieldset>
     <legend>Account Info</legend>
-
-    <%= fields_for :account, @transaction.account do |a| %>
-    
+  
     <%= render :partial => 'errors', :locals => { :object => a.object } %>
     
     <ul>
@@ -32,13 +31,15 @@
         <%= a.text_field :company_name %>
       </li>
     </ul>
-    <% end %>
   </fieldset>
+  <% end %>
 
   <%= fields_for :billing_info, @transaction.account.billing_info do |b| %>
 
   <fieldset class="billing">
     <legend>Billing Info</legend>
+    
+    <%= render :partial => 'errors', :locals => { :object => b.object } %>
     
     <div class="accepted_cards">
       <%= image_tag 'credit_cards/amex.png', :alt => 'American Express' %>
@@ -47,7 +48,6 @@
       <%= image_tag 'credit_cards/visa.png', :alt => 'Visa' %>
     </div>
     
-    <%= render :partial => 'errors', :locals => { :object => b.object } %>
 
     <ul>
       <li class="first_name">
@@ -76,10 +76,13 @@
 
         <li class="expires">
           <%= c.label :month, 'Expires:' %>
-          <%= c.select :month,  1..12 %><%= c.select :year, Time.now.year..(Time.now.year + 10) %>
-        </li>
-
+          <ul>
+            <li class="month"><%= c.select :month,  1..12 %></li>
+            <li class="year"><%= c.select :year, Time.now.year..(Time.now.year + 10) %></li>
+          </ul>
+        </li>      
       </ul>
+
       <% end %>
 
       <ul class="address">

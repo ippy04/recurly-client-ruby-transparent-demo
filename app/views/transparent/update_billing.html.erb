@@ -42,8 +42,11 @@
 
         <li class="expires">
           <%= c.label :month, 'Expires:' %>
-          <%= c.select :month,  1..12 %><%= c.select :year, Time.now.year..(Time.now.year + 10) %>
-        </li>
+          <ul>
+            <li class="month"><%= c.select :month,  1..12 %></li>
+            <li class="year"><%= c.select :year, Time.now.year..(Time.now.year + 10) %></li>
+          </ul>
+        </li>      
 
       </ul>
       <% end %>
