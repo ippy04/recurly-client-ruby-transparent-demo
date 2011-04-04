@@ -9,14 +9,15 @@ gem "ruby-debug19", :platforms => :mri_19
 gem 'dynamic_form'
 
 # use this to load from rubygems (preferred)
-gem "recurly", '>=0.3.4'
+#gem "recurly", '>=0.3.4'
 
+gem 'nokogiri'
 
 # INTERNATIONALIZATION
 gem 'localized_country_select'
 
 # use this to load from git
-#gem "recurly", :git => "git@github.com:recurly/recurly-client-ruby.git"
+gem "recurly", :git => "git@github.com:recurly/recurly-client-ruby.git"
 
 # # use this to load from local path
 #gem "recurly", :path => "~/Development/recurly/gems/client-ruby-transparent"

@@ -28,7 +28,6 @@ body {
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 10px 100px rgba(215, 200, 250, 0.5);
 }
 
 /* line 30, ../../app/stylesheets/master.scss */
@@ -53,7 +52,7 @@ form {
   border-left: 1px dashed #ccc;
 }
 
-/* line 51, ../../app/stylesheets/master.scss */
+/* line 50, ../../app/stylesheets/master.scss */
 code {
   background: #ddd;
 }
